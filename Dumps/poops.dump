@@ -1,0 +1,104 @@
+-- MySQL dump 10.13  Distrib 5.5.35, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: poops
+-- ------------------------------------------------------
+-- Server version	5.5.35-0ubuntu0.12.04.2
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category`
+--
+
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES (80,'Sandwich-of-the-week'),(81,'Dinner-Sides'),(82,'Pizza-Special'),(83,'Salad-of-the-week'),(84,'Grill-Special'),(85,'Italian-Entree'),(86,'Soups'),(87,'Dinner-Entrees'),(88,'Burger-Special'),(89,'Lunch'),(90,'Dinner'),(91,'Mongolian-Grill-(Dinner)'),(92,'Simply-Eats:-Allergen-and-Vegan-Friendly-Cuisine'),(93,'Bakery-(Breakfast)'),(94,'Bakery-(Lunch)'),(95,'Dinner-Bar'),(96,'Bakery-(Dinner)'),(97,'Pizza-(Dinner)'),(98,'Hale-and-Hearty-Soups-All-Day'),(99,'Breakfast-Bar'),(100,'Pizza-(Lunch)'),(101,'Pasta-Bar-(Dinner)'),(102,'Simply-Eats:-Allergen-and-Vegan-Friendly-Cuisine-(Lunch)'),(103,'Mongolian-Grill-(Breakfast)'),(104,'Mongolian-Grill-(Lunch)');
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `food_items`
+--
+
+DROP TABLE IF EXISTS `food_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `food_items` (
+  `name` varchar(128) DEFAULT NULL,
+  `fk_locid` int(11) DEFAULT NULL,
+  `fk_catid` int(11) DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY `fk_locid` (`fk_locid`),
+  KEY `fk_catid` (`fk_catid`),
+  CONSTRAINT `food_items_ibfk_1` FOREIGN KEY (`fk_locid`) REFERENCES `location` (`id`),
+  CONSTRAINT `food_items_ibfk_2` FOREIGN KEY (`fk_catid`) REFERENCES `category` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `food_items`
+--
+
+LOCK TABLES `food_items` WRITE;
+/*!40000 ALTER TABLE `food_items` DISABLE KEYS */;
+/*!40000 ALTER TABLE `food_items` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `location`
+--
+
+DROP TABLE IF EXISTS `location`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `location` (
+  `name` varchar(128) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `location`
+--
+
+LOCK TABLES `location` WRITE;
+/*!40000 ALTER TABLE `location` DISABLE KEYS */;
+INSERT INTO `location` VALUES ('Brick City',28),('Commons',26),('Crossroads',27),('Global Village Grille',29),('Gracies',30),('Ritz',25);
+/*!40000 ALTER TABLE `location` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2014-03-01 11:47:16

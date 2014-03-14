@@ -1,0 +1,36 @@
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 100%;
+}
+
+#page-wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+	background-color:#FFF;
+	padding: 1em;
+	margin: 1em auto;
+	min-height: 0px;
+	border: 10px outset #f36e21;
+	box-shadow: 0 2px 10px rgba(0,0,0.8);
+}
+
+.location-menu-category {
+	color: #da631d;
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.location-menu-item {
+	font-weight: normal;
+	text-indent: 1em;
+}
+
+h1 {
+	padding-left: .5em;
+	color: #da631d;
+}
+
+h2 {
+	color: #da631d;
+}
